@@ -52,7 +52,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
     _, @owner, @repo, @tag, @filename = *@url.match(url_pattern)
   end
   def download_url
-    "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
+    "https://oauth2:#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
   end
   private
   def _fetch(url:, resolved_url:, timeout:)
