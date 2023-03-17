@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.84.13"
+  version "2.84.14"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.84.13/betting.test.framework_2.84.13_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "3062e42417f5d8a6319208bc82d3499f2fd7fa258874d78941361b93ad5379d6"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.84.14/betting.test.framework_2.84.14_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "3e27db4227cb068e007d17192307c73ccfebcd2ac82422b0d53b59b25058d68f"
 
       def install
         bin.install "betctl"
@@ -19,8 +19,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.84.13/betting.test.framework_2.84.13_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "67b7ea419ad33b500a8e7ac648a253c659c5609dee64e47d5dc4cf2e48b0aad9"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.84.14/betting.test.framework_2.84.14_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "bdee445eeb44cc9ba9c2f4badd7892b72de2d78bf5fa4eae2b2039fb05f441ce"
 
       def install
         bin.install "betctl"
@@ -31,8 +31,8 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.84.13/betting.test.framework_2.84.13_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "c631a04d033eb76b1c035249aadaeb22e424092ff7ce558703a04232ab83e56c"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.84.14/betting.test.framework_2.84.14_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "69d49132a356f65cc9af2417eb66241b297b8731c9e4ec376dbf712aac4945a8"
 
       def install
         bin.install "betctl"
@@ -40,8 +40,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.84.13/betting.test.framework_2.84.13_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "37b0a201179452735789d444ab30f2359d9a0f782aded17bb321034cc77a35fb"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.84.14/betting.test.framework_2.84.14_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "a1b17fd4988657ea28e5f48b5e29a35eb46c4e0353f0d46c45bd798cce5c60e7"
 
       def install
         bin.install "betctl"
