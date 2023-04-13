@@ -92,4 +92,3 @@ class GithubPrivateReleaseDownloadStrategy < CurlDownloadStrategy
       GitHub::API.open_rest(release_url)
     end
   end
-end
