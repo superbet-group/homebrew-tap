@@ -1,3 +1,11 @@
+# GitHubPrivateRepositoryDownloadStrategy downloads contents from GitHub
+# Private Repository. To use it, add
+# `:using => GitHubPrivateRepositoryDownloadStrategy` to the URL section of
+# your formula. This download strategy uses GitHub access tokens (in the
+# environment variables `HOMEBREW_GITHUB_API_TOKEN`) to sign the request.  This
+# strategy is suitable for corporate use just like S3DownloadStrategy, because
+# it lets you use a private GitHub repository for internal distribution.  It
+# works with public one, but in that case simply use CurlDownloadStrategy.
 class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   require "utils/formatter"
   require "utils/github"
@@ -17,7 +25,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def download_url
-    "https://#{@github_token}@github.com/#{@owner}/#{@repo}/#{@filepath}"
+    "https://oauth2:#{@github_token}@github.com/#{@owner}/#{@repo}/#{@filepath}"
   end
 
   private
@@ -49,6 +57,11 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 end
 
+# GitHubPrivateRepositoryReleaseDownloadStrategy downloads tarballs from GitHub
+# Release assets. To use it, add
+# `:using => GitHubPrivateRepositoryReleaseDownloadStrategy` to the URL section of
+# your formula. This download strategy uses GitHub access tokens (in the
+# environment variables HOMEBREW_GITHUB_API_TOKEN) to sign the request.
 class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDownloadStrategy
   def initialize(url, name, version, **meta)
     super
