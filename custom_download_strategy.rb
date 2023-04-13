@@ -39,7 +39,11 @@ def initialize(url, name, version, **meta)
     raise CurlDownloadStrategyError, message
   end
 end
-
+# GitHubPrivateRepositoryReleaseDownloadStrategy downloads tarballs from GitHub
+# Release assets. To use it, add
+# `:using => GitHubPrivateRepositoryReleaseDownloadStrategy` to the URL section of
+# your formula. This download strategy uses GitHub access tokens (in the
+# environment variables HOMEBREW_GITHUB_API_TOKEN) to sign the request.
 class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDownloadStrategy
   def initialize(url, name, version, **meta)
     super
@@ -52,7 +56,7 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
     _, @owner, @repo, @tag, @filename = *@url.match(url_pattern)
   end
   def download_url
-    "https://oauth2:#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
+    "https://#{@github_token}@api.github.com/repos/#{@owner}/#{@repo}/releases/assets/#{asset_id}"
   end
   private
   def _fetch(url:, resolved_url:, timeout:)
