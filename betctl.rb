@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.101.9"
+  version "2.101.10"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.9/betting.test.framework_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "a568a031e22bd685277f7cc677e7a1e335954542c659f4d5bec536ef6e8c94cb"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.10/betting.test.framework_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "c9073810c9a3d755145fcdd8076a3057c4eedfb3b13dfcd0ab50e7951d719374"
 
       def install
         bin.install "betctl"
@@ -19,8 +19,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.9/betting.test.framework_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f6d3136bb4cc304f17959cdf6ee09205d921a57c4341181729172178d35e20c0"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.10/betting.test.framework_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "a02bd912213a61fe20c05d034b878cb251ce0201d514ab199cf64b95f797469b"
 
       def install
         bin.install "betctl"
@@ -31,8 +31,8 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.9/betting.test.framework_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "e5fcdc2d45db79881547a66eebbf4aa6eb2a7549fc304e4b404da6531a7fca77"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.10/betting.test.framework_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "36de76e9e9dd8d72b566965ab6f2d1d533e7ae8c84cbae91127f7f0fe7877b9e"
 
       def install
         bin.install "betctl"
@@ -47,7 +47,6 @@ class Betctl < Formula
 
   def caveats
     <<~EOS
-      <<~EOS
       To activate powerlevel10k integration, add the following line to .zshrc:
 
         source #{opt_prefix}/betctl-p10k.zsh
@@ -55,7 +54,6 @@ class Betctl < Formula
       If you have already done this step, feel free to ignore this message.
 
       Good luck with your testing endeavours :D
-      EOS
     EOS
   end
 end
