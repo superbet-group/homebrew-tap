@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.101.14"
+  version "2.101.15"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.14/betting.test.framework_v2.101.14_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "de9efd4becd1eddec52101ae8b4f508db2a4bade50104decb3f96bdc54830e8b"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.15/betting.test.framework_v2.101.15_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "c963725be836b97b36a639b91b17211a7749f4b214c118e0d6685cb2a289830b"
 
       def install
         bin.install "betctl"
@@ -19,8 +19,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.14/betting.test.framework_v2.101.14_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "a590c1b84421f52129f32a11691823c4a1f7ff66a055b8e48541baafc0cad7d1"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.15/betting.test.framework_v2.101.15_darwin_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "3b244bd1070b439c5bdb16892d7e9790f2a0c9900273e280e0c0ee3e72045e71"
 
       def install
         bin.install "betctl"
@@ -31,8 +31,8 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.14/betting.test.framework_v2.101.14_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "b1e05b4eb68587bd8a7a2c731f2dceca948c65b5f7b155df5dd8640f4ae05425"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.15/betting.test.framework_v2.101.15_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "2ca3052f83afddf510474cf02a676cd95e52a20a6c0d2358a6ca511e813ffe79"
 
       def install
         bin.install "betctl"
