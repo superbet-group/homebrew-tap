@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.101.17"
+  version "2.101.18"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.17/betctl_ 2.101.17_darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ebefa2412f78628b6f648e5ba14d093c44a83586395704327fac971e46c64e41"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.18/betctl_2.101.18_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "d75731d50f1489d7f618932107555ad6f022ecce183b22f2dd00fedaab5f7c60"
 
       def install
         bin.install "betctl"
@@ -20,8 +20,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.17/betctl_ 2.101.17_darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "7b06010cdc883e270db52fedfa11cc7d109b35289eaab00014c61353bc7731bf"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.18/betctl_2.101.18_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "4697235e307dda337f8dfb372c280466ca400a4e253944fa704a5cfbfd6115a0"
 
       def install
         bin.install "betctl"
@@ -33,8 +33,8 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.17/betctl_ 2.101.17_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "1c941e0addb72aa9a47aebc7c623027b5501102e399fd8de49e0eb717e9bb6cb"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.101.18/betctl_2.101.18_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "ecc6caa0efc3d479eb3a2efe38fdb15f5b334d0c9aefa1cfa67eff317029aeb9"
 
       def install
         bin.install "betctl"
@@ -50,7 +50,7 @@ class Betctl < Formula
 
         source #{opt_prefix}/betctl-p10k.zsh
 
-      If you have already done this step, feel free to ignore this message.
+      Good luck with your testing endeavours :)
     EOS
   end
 end
