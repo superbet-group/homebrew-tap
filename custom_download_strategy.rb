@@ -35,7 +35,8 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def set_github_token
-    @github_token = shell_output("#{bin}/gh auth token")
+    @gh = `which gh`
+    @github_token = shell_output("#{@gh} auth token")
     unless @github_token
       raise CurlDownloadStrategyError, "Environmental variable HOMEBREW_GITHUB_API_TOKEN is required."
     end
