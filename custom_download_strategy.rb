@@ -35,7 +35,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def set_github_token
-    @github_token = system_command "gh",
+    @github_token = system_command "#{bin}/gh",
                     args: ["auth", "token"],
                     sudo: false
     unless @github_token
