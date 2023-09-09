@@ -35,10 +35,7 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def set_github_token
-    @gh = `which gh`
-    @github_token = system_command "#{@gh}",
-                    args: ["auth", "token"],
-                    sudo: false
+    @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
     unless @github_token
       raise CurlDownloadStrategyError, "Environmental variable HOMEBREW_GITHUB_API_TOKEN is required."
     end
