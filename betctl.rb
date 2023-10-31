@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.122.5"
+  version "2.122.6"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.122.5/betctl_2.122.5_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "090f4166332ec65c365fcb28dd0ba8183fc49ee52eaf7c02104a8c5163fe1f75"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.122.6/betctl_2.122.6_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "d13b07170dfef5ac216420d3d06a4d8e11e267187353d49cda13bda130bb0b18"
 
       def install
         bin.install "betctl"
@@ -20,8 +20,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.122.5/betctl_2.122.5_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f30df54c614f67f018742b4f4db714ce0d250f98de43a97f1d7d789e407d018e"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.122.6/betctl_2.122.6_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "e1d819f51020a84538265372fe2d44fd7544696e75cd4e47dfa253a12461293e"
 
       def install
         bin.install "betctl"
@@ -33,8 +33,8 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.122.5/betctl_2.122.5_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4ef1ba382e48af7fb3f37ccc1bc1260c8edfc9b6f38bdf6432f6cf4b41965278"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.122.6/betctl_2.122.6_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "4c970a967c21b68702244e1335de079d2436810d1054730f83e8d68abb267e9e"
 
       def install
         bin.install "betctl"
