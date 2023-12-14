@@ -1,1 +1,1 @@
-# Betting Platform Homebrew tap
+# Betting Platform Homebrew tap - I changed something
