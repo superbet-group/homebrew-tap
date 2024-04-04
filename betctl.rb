@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.146.0"
+  version "2.146.1"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.146.0/betctl_2.146.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "1d4d583c0b9801f3897796a04035e1917ec4c662d8d9b6878066d18c5089a540"
+    if Hardware::CPU.intel?
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.146.1/betctl_2.146.1_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "6b59415cb62c2e80f36830a536687002e47df7db3a7ac0beaeb907e9779bad86"
 
       def install
         bin.install "betctl"
@@ -19,9 +19,9 @@ class Betctl < Formula
         generate_completions_from_executable(bin/"betctl", "completion")
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.146.0/betctl_2.146.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "9dd571272a90dd26468938381ae5f8fcc6700984043bd4e2647b358f0c2f49d8"
+    if Hardware::CPU.arm?
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.146.1/betctl_2.146.1_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "9690fcf74dec8fcdc45ab6133d424bf3f9b8cefa3a6ec4dc649cbfcef78081fb"
 
       def install
         bin.install "betctl"
@@ -33,8 +33,8 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.146.0/betctl_2.146.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "014aa768f75aeabbf1543c5369202fc82c675eedb6cc5208c1b2a1c4e7e2ba4d"
+      url "https://github.com/superbet-group/betting.test.framework/releases/download/v2.146.1/betctl_2.146.1_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "7ea558910eabd8c1eb6deb1b992d6ca079cfd8ac47c1aec1ee3fd63260c866ae"
 
       def install
         bin.install "betctl"
