@@ -24,6 +24,7 @@ class Lola < Formula
       sha256 "c6096304560508a31ffc7c871384db03a2dd9cd09d59701a8d6b448acef3c6cd"
 
       def install
+        bin.install "lola/_internal/"
         bin.install "lola/lola"
       end
     end
