@@ -1,1 +1,1 @@
-# Betting Platform Homebrew tap
+# Superbet Group Homebrew tap
