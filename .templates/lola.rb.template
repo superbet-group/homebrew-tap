@@ -15,7 +15,7 @@ class Lola < Formula
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
-        generate_completions_from_executable(bin/"lola", "--show-completion")
+        generate_completions_from_executable(bin/"lola", "--show-completion", shells: [:zsh])
       end
     end
     on_arm do
@@ -25,7 +25,7 @@ class Lola < Formula
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
-        generate_completions_from_executable(bin/"lola", "--show-completion")
+        generate_completions_from_executable(bin/"lola", "--show-completion", shells: [:zsh])
       end
     end
   end
@@ -38,7 +38,7 @@ class Lola < Formula
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
-        generate_completions_from_executable(bin/"lola", "--show-completion")
+        generate_completions_from_executable(bin/"lola", "--show-completion", shells: [:bash])
       end
     end
     on_arm do
@@ -48,7 +48,7 @@ class Lola < Formula
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
-        generate_completions_from_executable(bin/"lola", "--show-completion")
+        generate_completions_from_executable(bin/"lola", "--show-completion", shells: [:bash])
       end
     end
   end
