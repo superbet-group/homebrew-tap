@@ -1,17 +1,14 @@
 # typed: false
 # frozen_string_literal: true
-
 require_relative "custom_download_strategy"
 class Lola < Formula
   desc "Local infra starting and provisioning CLI."
   homepage "https://github.com/superbet-group/engprod.lola"
-  version "0.0.39"
-
+  version "0.0.41"
   on_macos do
     on_intel do
-      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.39/lola-macos-amd64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8aa0ea4e2d3adc53c64dd03bae4727ba92a071fa929d07797fa26d1d271e25c1"
-
+      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.41/lola-macos-amd64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "3a60462095922ddef7728e8670e1d83ae7300b592ae7f4941543dd77dc4cf7f4"
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
@@ -19,9 +16,8 @@ class Lola < Formula
       end
     end
     on_arm do
-      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.39/lola-macos-arm64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "53b40e1057539a71e43ced17f4f549b1cac3c4714b5c39f2bc79381b80dc0561"
-
+      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.41/lola-macos-arm64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "cf2579a4f6232cd63f60f8e1c90771dd3195352a2528e451a4e285dcb01b306d"
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
@@ -29,12 +25,10 @@ class Lola < Formula
       end
     end
   end
-
   on_linux do
     on_intel do
-      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.39/lola-ubuntu-amd64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f4ca00aa38eccd60c64ec4ebe4cbf033c7ca51becc24b482429ba855145678a5"
-
+      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.41/lola-ubuntu-amd64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "9e920d30aea5c7b798b71af540dc281e77f622ef4f1ca99183480d87214aa556"
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
@@ -42,9 +36,8 @@ class Lola < Formula
       end
     end
     on_arm do
-      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.39/lola-alpine-arm64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "cb0d6d89aafff5595344af685ae51e69c86da54678d400697122f3fdb7015c9c"
-
+      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.41/lola-alpine-arm64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "28dbc7ba24208cd219ea5c01dde24ff1b230fc69f023af2d010df51f0a75937e"
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
@@ -52,7 +45,6 @@ class Lola < Formula
       end
     end
   end
-
   def caveats
     <<~EOS
     Requirements:
@@ -63,14 +55,12 @@ class Lola < Formula
       * `aws-cli` (for provisioning dynamodb tables)
       * `engprod.local-development` cloned and path added to environment variable `LOCAL_DEV_PATH`
         * https://github.com/superbet-group/engprod.local-development
-
         ```
         git clone git@github.com:superbet-group/engprod.local-development.git
         export LOCAL_DEV_PATH=/my/path/engprod.local-development # or add it to your .zshrc or .bashrc
         ```
     EOS
   end
-
   test do
     system "#{bin}/lola --help"
   end
