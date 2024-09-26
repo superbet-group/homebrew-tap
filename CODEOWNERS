@@ -1,7 +1,7 @@
 * @ifutivic
 betctl.rb @ifutivic
 custom_download_strategy.rb @ifutivic
-happening-docker-credential-helper.rb @patresso
-Casks/teleport-cli.rb @patresso
+happening-docker-credential-helper.rb @superbet-group/sports-infra
+Casks/teleport-cli.rb @superbet-group/sports-infra
 lola.rb @perix4
-riskctl.rb @Juricakov
+riskctl.rb @superbet-group/risk
