@@ -1,5 +1,7 @@
 * @ifutivic
-betctl.rb custom_download_strategy.rb @ifutivic
-happening-docker-credential-helper.rb Casks/teleport-cli.rb @patresso
+betctl.rb @ifutivic
+custom_download_strategy.rb @ifutivic
+happening-docker-credential-helper.rb @patresso
+Casks/teleport-cli.rb @patresso
 lola.rb @perix4
 riskctl.rb @Juricakov
