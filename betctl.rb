@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.182.0"
+  version "2.183.0-feat-test-adding-user-agent-to-clients-api-request.1"
 
   on_macos do
     on_intel do
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.182.0/betctl_2.182.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "a03c3f1296d386fa62d8959f5a19dd924825bd2dee429541259c3e4906eaa029"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.183.0-feat-test-adding-user-agent-to-clients-api-request.1/betctl_2.183.0-feat-test-adding-user-agent-to-clients-api-request.1_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "84f9fb9d00f2425aca2d7398df1e747027f821eafb684dfe7a3ac030ad5a07be"
 
       def install
         bin.install "betctl"
@@ -20,8 +20,8 @@ class Betctl < Formula
       end
     end
     on_arm do
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.182.0/betctl_2.182.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f730db66642397f520c5f3714955c9380d23e064159b18bc2a87483799c68fcd"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.183.0-feat-test-adding-user-agent-to-clients-api-request.1/betctl_2.183.0-feat-test-adding-user-agent-to-clients-api-request.1_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "43cd63983a21ff33452bc171a8894797f7676b52f7312bd95aa389ea308d038c"
 
       def install
         bin.install "betctl"
@@ -34,8 +34,8 @@ class Betctl < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/superbet-group/betting.cli/releases/download/v2.182.0/betctl_2.182.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "bf31676b97d9b026dda204f02e154a53a929828f67f9179710cdb52f4b1af662"
+        url "https://github.com/superbet-group/betting.cli/releases/download/v2.183.0-feat-test-adding-user-agent-to-clients-api-request.1/betctl_2.183.0-feat-test-adding-user-agent-to-clients-api-request.1_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "1b286cd24ba26eadb25ae7dad70d8e7623c44074ab3d4d42007b7ae0f911428f"
 
         def install
           bin.install "betctl"
@@ -46,8 +46,8 @@ class Betctl < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/superbet-group/betting.cli/releases/download/v2.182.0/betctl_2.182.0_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "8040aa84db8aa8902d5142de91571f9678b8dbf2ba3f9ec7886d211a70184b05"
+        url "https://github.com/superbet-group/betting.cli/releases/download/v2.183.0-feat-test-adding-user-agent-to-clients-api-request.1/betctl_2.183.0-feat-test-adding-user-agent-to-clients-api-request.1_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "871c035ef3a71f55b5899efe2f2ca99fa1cb941e0235193e40fa5b4f5b767129"
 
         def install
           bin.install "betctl"
