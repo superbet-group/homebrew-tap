@@ -1,14 +1,15 @@
 # typed: false
 # frozen_string_literal: true
+
 require_relative "custom_download_strategy"
 class Lola < Formula
   desc "Local infra starting and provisioning CLI."
   homepage "https://github.com/superbet-group/engprod.lola"
-  version "0.0.48"
+  version "0.0.49"
   on_macos do
     on_intel do
-      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.48/lola-macos-amd64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "3b75a05c1592d77613b82e0ef5be75a0416f779a33acc487930d3e2586ea56fb"
+      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.49/lola-macos-amd64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "2abe009707a2e06f74db00e8d438e0a60460ebb5887f6611285341d4774c9b3e"
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
@@ -16,8 +17,8 @@ class Lola < Formula
       end
     end
     on_arm do
-      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.48/lola-macos-arm64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "33474f10f8b0dd593a9eaa8f997ed1d51d4084e2678f6285d1fa87ff342c39ed"
+      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.49/lola-macos-arm64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "7bbe4d62955dc0b46b9421d374eb9fbd380feed1a56e797357439ff3107e42ab"
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
@@ -27,8 +28,8 @@ class Lola < Formula
   end
   on_linux do
     on_intel do
-      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.48/lola-ubuntu-amd64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "b87ccb4f440208de89fc21d0717bf32bf9d8afc449052d2df6998c39bde6b102"
+      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.49/lola-ubuntu-amd64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "b2d4dd260604112d57cc27906d0cf3b34360f00eaaf3cfc4d4e293195d9fe8d5"
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
@@ -36,8 +37,8 @@ class Lola < Formula
       end
     end
     on_arm do
-      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.48/lola-alpine-arm64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "5c402123a4dc8bda4f964f5056ac1bef1b4cc820069f764c41c00df27f322e61"
+      url "https://github.com/superbet-group/engprod.lola/releases/download/v0.0.49/lola-alpine-arm64.bundle.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "0b895794a60c0014819182517cccf5278fc62225fcedef3f9ad457aae729e905"
       def install
         bin.install "lola/_internal/"
         bin.install "lola/lola"
