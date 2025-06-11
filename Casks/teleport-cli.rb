@@ -3,8 +3,8 @@ cask "teleport-cli" do
   desc "Access proxy providing access to k8s, aws, apps, dbs and servers through ssh and rdp"
   homepage "https://goteleport.com/"
 
-  version "17.4.2"
-  sha256 "08ad0a6927eb0b8e6230ce0e0092e3c9e4729b392d0d8a925c7c12520cde84ff"
+  version "17.5.2"
+  sha256 "5c89b293f0f914fe35ceb04995d99ef0e91a54182833be4acae23472ce041d59"
 
   url "https://cdn.teleport.dev/teleport-ent-#{version}.pkg",
       verified: "cdn.teleport.dev/"
