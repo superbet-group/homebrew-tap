@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Gamcli < Formula
   desc ""
   homepage ""
-  version "1.1.0"
+  version "1.2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/gaming.common.cli/releases/download/v1.1.0/gamcli_1.1.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "9318a48b588b8c5bb1e0731c9df6c513d4668a97be0ba9929abe8c76443e41c3"
+      url "https://github.com/superbet-group/gaming.common.cli/releases/download/v1.2.0/gamcli_1.2.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "1ebcfe8e1fa709439e0997bbd474450278f5f215db9bd210d17889d516ee80db"
 
       def install
         bin.install "gamcli"
@@ -19,8 +19,8 @@ class Gamcli < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/gaming.common.cli/releases/download/v1.1.0/gamcli_1.1.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f923c85a956db15b3562a951c9fd35de8508e6986f68d85131f83b8e78b2436d"
+      url "https://github.com/superbet-group/gaming.common.cli/releases/download/v1.2.0/gamcli_1.2.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "407ef1a5e57f9af3050bcb5249eab8d9811b61c62825e4ccd5653ce1bdccd268"
 
       def install
         bin.install "gamcli"
@@ -31,16 +31,16 @@ class Gamcli < Formula
 
   on_linux do
     if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/gaming.common.cli/releases/download/v1.1.0/gamcli_1.1.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "7e2f42ab137545de99c747bc3d2bae038c1a5e81622eb4677bc69a7154e21e30"
+      url "https://github.com/superbet-group/gaming.common.cli/releases/download/v1.2.0/gamcli_1.2.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "ce727fa2c91ec4f15313bb8330609b11a44f42412a60d9273c338a329e91ab0b"
       def install
         bin.install "gamcli"
         generate_completions_from_executable(bin/"gamcli", "completion")
       end
     end
     if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/gaming.common.cli/releases/download/v1.1.0/gamcli_1.1.0_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "2d622c3d788789c808777cbf109d6018529772379eceb73190939d774b072552"
+      url "https://github.com/superbet-group/gaming.common.cli/releases/download/v1.2.0/gamcli_1.2.0_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "e1f09cdbcd8282ea16f1b69890002817e925a584a6548b5abd6cfda57b755125"
       def install
         bin.install "gamcli"
         generate_completions_from_executable(bin/"gamcli", "completion")
