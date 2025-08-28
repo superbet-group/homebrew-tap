@@ -15,7 +15,7 @@ cask "teleport-cli" do
 
   pkg "teleport-ent-#{version}.pkg"
 
-  define_method(:install) do
+  preflight do
     conflicting_packages = []
     conflicting_casks = []
     conflicting_formulas = []
@@ -49,9 +49,6 @@ cask "teleport-cli" do
 
       odie error_message
     end
-
-    # Proceed with normal installation
-    super
   end
 
   def caveats
