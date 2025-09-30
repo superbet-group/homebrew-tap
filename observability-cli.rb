@@ -2,7 +2,7 @@ require_relative "custom_download_strategy"
 class ObservabilityCli < Formula
   desc "Application Observability CLI for Superbet Group"
   homepage "https://github.com/superbet-group/observability.application.observability-cli"
-  version "1.3.1" 
+  version "1.4.0"
 
   on_macos do
     if Hardware::CPU.arm?
