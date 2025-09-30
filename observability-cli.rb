@@ -2,17 +2,17 @@ require_relative "custom_download_strategy"
 class ObservabilityCli < Formula
   desc "Application Observability CLI for Superbet Group"
   homepage "https://github.com/superbet-group/observability.application.observability-cli"
-  version "1.4.3"
+  version "1.4.4"
 
   on_macos do
     if Hardware::CPU.arm?
       @binary_name = "observability-cli"
       @archive_file = "observability-cli-macos-arm64.tar.gz"
-      @sha256_checksum = "45579060b732efb14c5bf0dc70fc99e04306b6f635e8cd600c7b0e5649873929"
+      @sha256_checksum = "15febc77d2ce41b64fbd264373c1a9296fc2f07de14e232ba8d024783779ae92"
     elsif Hardware::CPU.intel?
       @binary_name = "observability-cli"
       @archive_file = "observability-cli-macos-amd64.tar.gz"
-      @sha256_checksum = "7c4750f63d8982deac72e8fbd09dc6b24a0a3aae1c9aa5c463e271ce79fe1c26"
+      @sha256_checksum = "4b88a3b34222a0f143e9127218f25c37c43d62cecb90d9c504fe0335f1316b58"
     end
   end
 
@@ -20,11 +20,11 @@ class ObservabilityCli < Formula
     if Hardware::CPU.intel?
       @binary_name = "observability-cli"
       @archive_file = "observability-cli-linux-amd64.tar.gz"
-      @sha256_checksum = "75cf8c09185f17968ecf01a0770dbaefb34288cd50c6c5720e83c6705620c780"
+      @sha256_checksum = "4830acf9fa0bbb42a6a5492739dde334e42f2de90d423694a5513900c60facb6"
     elsif Hardware::CPU.arm?
       @binary_name = "observability-cli"
       @archive_file = "observability-cli-linux-arm64.tar.gz"
-      @sha256_checksum = "704147efc1bf98d87653038ef713f703f7d51eb7362b0ecbf8fc9ba299f785e2"
+      @sha256_checksum = "e72f43813d440ef9f4c2963fc7f6ca24a9ff6fd51a4ce244c5e981de77d316ed"
     end
   end
   
