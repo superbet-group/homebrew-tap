@@ -2,7 +2,7 @@ require_relative "custom_download_strategy"
 class ObservabilityCli < Formula
   desc "Application Observability CLI for Superbet Group"
   homepage "https://github.com/superbet-group/observability.application.observability-cli"
-  version "1.4.4"
+  version "1.4.7"
 
   @archive_file = nil
   @sha256_checksum = nil
