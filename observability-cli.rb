@@ -9,20 +9,20 @@ class ObservabilityCli < Formula
   on_macos do
     if Hardware::CPU.arm?
       @archive_file = "observability-cli-macos-arm64.tar.gz"
-      @sha256_checksum = "15febc77d2ce41b64fbd264373c1a9296fc2f07de14e232ba8d024783779ae92"
+      @sha256_checksum = "719a9b098ae3e56b987022e17dce02c021d522504cf3db72bcd0e9153272a876"
     elsif Hardware::CPU.intel?
       @archive_file = "observability-cli-macos-amd64.tar.gz"
-      @sha256_checksum = "4b88a3b34222a0f143e9127218f25c37c43d62cecb90d9c504fe0335f1316b58"
+      @sha256_checksum = "e0c423e3dbb463d7a3a69574e9b74cd6a82acadca7ae169aba9c009c34fe4433"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
       @archive_file = "observability-cli-linux-amd64.tar.gz"
-      @sha256_checksum = "4830acf9fa0bbb42a6a5492739dde334e42f2de90d423694a5513900c60facb6"
+      @sha256_checksum = "e9e234a2cea9ac1553e458db2ae614d4144b88d42f29b3569699d0a8e7df8ae9"
     elsif Hardware::CPU.arm?
       @archive_file = "observability-cli-linux-arm64.tar.gz"
-      @sha256_checksum = "e72f43813d440ef9f4c2963fc7f6ca24a9ff6fd51a4ce244c5e981de77d316ed"
+      @sha256_checksum = "e289d9baa4c007304b12fd50f9c7f31c185132a4627d66e40e3cd2458afe649e"
     end
   end
   
