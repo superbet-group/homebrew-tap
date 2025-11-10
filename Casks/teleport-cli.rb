@@ -1,6 +1,6 @@
 cask "teleport-cli" do
-  version "17.5.2"
-  sha256 "5c89b293f0f914fe35ceb04995d99ef0e91a54182833be4acae23472ce041d59"
+  version "18.3.2"
+  sha256 "bbe83f4f638828ad2bd9f818aaa3fdcf31a02c89ec3a713408e5cfc62f098b20"
 
   url "https://cdn.teleport.dev/teleport-ent-#{version}.pkg",
       verified: "cdn.teleport.dev/"
