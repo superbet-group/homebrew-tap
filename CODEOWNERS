@@ -1,4 +1,3 @@
-* @ifutivic
 betctl.rb @ifutivic
 custom_download_strategy.rb @ifutivic
 happening-docker-credential-helper.rb @superbet-group/sports-infra
