@@ -80,7 +80,8 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
         end
       end
     end
-    unless @github_token && !@github_token.empty?
+    @github_token = @github_token.to_s.strip
+    if @github_token.empty?
       message = <<~EOS
         GitHub token not found. To fix this:
 
