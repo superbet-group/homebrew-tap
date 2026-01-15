@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "net/http"
+require "uri"
 require "utils/formatter"
 require "utils/github"
 require "open3"
@@ -57,37 +59,22 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
   end
 
   def set_github_token
-    @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
-    unless @github_token
-      # Try to get token from GitHub CLI
-      # Homebrew may run with restricted PATH, so we try common installation paths:
-      gh_paths = [
-        "/opt/homebrew/bin/gh",  # macOS Apple Silicon (Homebrew default)
-        "/usr/local/bin/gh",     # macOS Intel / Linux manual install
-        "/usr/bin/gh",           # Linux package manager (apt, dnf, yum)
-        "gh"                     # Fallback to PATH lookup
-      ]
-      gh_paths.each do |gh_path|
-        begin
-          stdout, _, status = Open3.capture3(gh_path, "auth", "token")
-          if status.success? && !stdout.strip.empty?
-            @github_token = stdout.strip
-            break
-          end
-        rescue Errno::ENOENT
-          # Command not found, try next path
-          next
-        end
-      end
+    @github_token = ENV["HOMEBREW_GITHUB_API_TOKEN"].to_s.strip
+
+    # If env var is empty or not set, try GitHub CLI
+    if @github_token.empty?
+      @github_token = fetch_token_from_gh_cli
     end
-    @github_token = @github_token.to_s.strip
+
     if @github_token.empty?
       message = <<~EOS
         GitHub token not found. To fix this:
 
         1. Install GitHub CLI:     brew install gh
         2. Authenticate:           gh auth login
-        3. Set token for Homebrew: export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token)
+
+        Or set token manually:
+           export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token)
       EOS
       raise CurlDownloadStrategyError, message
     end
@@ -95,20 +82,64 @@ class GitHubPrivateRepositoryDownloadStrategy < CurlDownloadStrategy
     validate_github_repository_access!
   end
 
+  def fetch_token_from_gh_cli
+    # Homebrew may run with restricted PATH, so we try common installation paths
+    gh_paths = [
+      "/opt/homebrew/bin/gh",  # macOS Apple Silicon (Homebrew default)
+      "/usr/local/bin/gh",     # macOS Intel / Linux manual install
+      "/usr/bin/gh",           # Linux package manager (apt, dnf, yum)
+      "gh"                     # Fallback to PATH lookup
+    ]
+
+    gh_paths.each do |gh_path|
+      begin
+        stdout, _, status = Open3.capture3(gh_path, "auth", "token")
+        return stdout.strip if status.success? && !stdout.strip.empty?
+      rescue Errno::ENOENT
+        next
+      end
+    end
+
+    ""
+  end
+
   def validate_github_repository_access!
-    GitHub.repository(@owner, @repo)
-  rescue GitHub::API::HTTPNotFoundError
-    message = <<~EOS
-      Repository not found or inaccessible: #{@owner}/#{@repo}
-      Token may not have permission or URL may be incorrect.
-    EOS
-    raise CurlDownloadStrategyError, message
-  rescue GitHub::API::AuthenticationFailedError
-    message = <<~EOS
-      GitHub authentication failed.
-      Your token may be invalid or expired. Try: gh auth login
-    EOS
-    raise CurlDownloadStrategyError, message
+    # Use our token directly instead of Homebrew's GitHub module
+    # which may not see tokens obtained from gh CLI
+    uri = URI("https://api.github.com/repos/#{@owner}/#{@repo}")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Get.new(uri)
+    request["Authorization"] = "token #{@github_token}"
+    request["Accept"] = "application/vnd.github.v3+json"
+    request["User-Agent"] = "Homebrew"
+
+    response = http.request(request)
+
+    case response.code.to_i
+    when 200
+      # Success - repository accessible
+      return
+    when 401
+      message = <<~EOS
+        GitHub authentication failed.
+        Your token may be invalid or expired. Try: gh auth login
+      EOS
+      raise CurlDownloadStrategyError, message
+    when 404
+      message = <<~EOS
+        Repository not found or inaccessible: #{@owner}/#{@repo}
+        Token may not have permission or URL may be incorrect.
+      EOS
+      raise CurlDownloadStrategyError, message
+    else
+      message = <<~EOS
+        Failed to access repository: #{@owner}/#{@repo}
+        HTTP #{response.code}: #{response.message}
+      EOS
+      raise CurlDownloadStrategyError, message
+    end
   rescue StandardError => e
     message = <<~EOS
       Failed to access repository: #{@owner}/#{@repo}
@@ -137,8 +168,9 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   def parse_url_pattern
     # Expected URL format: https://github.com/OWNER/REPO/releases/download/TAG/FILENAME
     # Example: https://github.com/superbet-group/my-repo/releases/download/v1.0.0/app-1.0.0.tar.gz
+    # Note: TAG can contain slashes (e.g., helper/v1.0.0)
     # See: https://docs.github.com/en/repositories/releasing-projects-on-github/linking-to-releases
-    url_pattern = %r{https://github\.com/(?<owner>[^/]+)/(?<repo>[^/]+)/releases/download/(?<tag>[^/]+)/(?<filename>\S+)}
+    url_pattern = %r{https://github\.com/(?<owner>[^/]+)/(?<repo>[^/]+)/releases/download/(?<tag>.+)/(?<filename>[^/]+)$}
     match = @url.match(url_pattern)
 
     unless match
@@ -182,6 +214,26 @@ class GitHubPrivateRepositoryReleaseDownloadStrategy < GitHubPrivateRepositoryDo
   end
 
   def fetch_release_metadata
-    GitHub.get_release(@owner, @repo, @tag)
+    # Use our token directly instead of Homebrew's GitHub module
+    uri = URI("https://api.github.com/repos/#{@owner}/#{@repo}/releases/tags/#{@tag}")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Get.new(uri)
+    request["Authorization"] = "token #{@github_token}"
+    request["Accept"] = "application/vnd.github.v3+json"
+    request["User-Agent"] = "Homebrew"
+
+    response = http.request(request)
+
+    case response.code.to_i
+    when 200
+      require "json"
+      JSON.parse(response.body)
+    when 404
+      raise CurlDownloadStrategyError, "Release not found: #{@tag}"
+    else
+      raise CurlDownloadStrategyError, "Failed to fetch release: HTTP #{response.code}"
+    end
   end
 end
