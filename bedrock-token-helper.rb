@@ -15,9 +15,9 @@
 #   4. Release workflow automatically renders template and creates PR in homebrew-tap
 #
 # Placeholders (automatically substituted during release):
-#   0.2.0    - Semantic version (e.g., 1.2.3)
-#   https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.2.0/bedrock-token-helper-0.2.0.tar.gz  - GitHub release asset URL
-#   0990180392b42d2a63463d6fc91fbde59b2c0b6acab0800ef85e057d5ceacc41     - Tarball SHA256 checksum
+#   0.2.1    - Semantic version (e.g., 1.2.3)
+#   https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.2.1/bedrock-token-helper-0.2.1.tar.gz  - GitHub release asset URL
+#   f529cf6e7a6e0ee1dbba4185d0c508e781f011e0da49585ad7a0ed5be7956c51     - Tarball SHA256 checksum
 
 require_relative "custom_download_strategy"
 
@@ -26,9 +26,9 @@ class BedrockTokenHelper < Formula
   homepage "https://github.com/superbet-group/platform.bedrock-token-gateway"
 
   # Production URL (requires HOMEBREW_GITHUB_API_TOKEN)
-  url "https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.2.0/bedrock-token-helper-0.2.0.tar.gz",
+  url "https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.2.1/bedrock-token-helper-0.2.1.tar.gz",
       using: GitHubPrivateRepositoryReleaseDownloadStrategy
-  sha256 "0990180392b42d2a63463d6fc91fbde59b2c0b6acab0800ef85e057d5ceacc41"
+  sha256 "f529cf6e7a6e0ee1dbba4185d0c508e781f011e0da49585ad7a0ed5be7956c51"
 
   depends_on "jq"
 
