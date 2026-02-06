@@ -15,9 +15,9 @@
 #   4. Release workflow automatically renders template and creates PR in homebrew-tap
 #
 # Placeholders (automatically substituted during release):
-#   0.2.1    - Semantic version (e.g., 1.2.3)
-#   https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.2.1/bedrock-token-helper-0.2.1.tar.gz  - GitHub release asset URL
-#   f529cf6e7a6e0ee1dbba4185d0c508e781f011e0da49585ad7a0ed5be7956c51     - Tarball SHA256 checksum
+#   0.2.2    - Semantic version (e.g., 1.2.3)
+#   https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.2.2/bedrock-token-helper-0.2.2.tar.gz  - GitHub release asset URL
+#   b7dae104dfd46ae810b73559e731dabe19a665e38d7bcf266a92a413617fa21f     - Tarball SHA256 checksum
 
 require_relative "custom_download_strategy"
 
@@ -26,9 +26,9 @@ class BedrockTokenHelper < Formula
   homepage "https://github.com/superbet-group/platform.bedrock-token-gateway"
 
   # Production URL (requires HOMEBREW_GITHUB_API_TOKEN)
-  url "https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.2.1/bedrock-token-helper-0.2.1.tar.gz",
+  url "https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.2.2/bedrock-token-helper-0.2.2.tar.gz",
       using: GitHubPrivateRepositoryReleaseDownloadStrategy
-  sha256 "f529cf6e7a6e0ee1dbba4185d0c508e781f011e0da49585ad7a0ed5be7956c51"
+  sha256 "b7dae104dfd46ae810b73559e731dabe19a665e38d7bcf266a92a413617fa21f"
 
   depends_on "jq"
 
@@ -65,6 +65,13 @@ class BedrockTokenHelper < Formula
 
       Run the setup wizard (recommended):
         bedrock-token-helper --setup
+
+      To update your existing model identifiers to company defaults:
+        bedrock-token-helper --setup --force-update-models
+
+        By default, --setup preserves your existing model configuration.
+        Use --force-update-models to update all default models
+        (Sonnet, Haiku, Opus) to the company-recommended versions.
 
       Or manually configure ~/.claude/settings.json:
         {
