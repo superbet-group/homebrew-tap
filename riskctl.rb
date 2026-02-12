@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Riskctl < Formula
   desc ""
   homepage ""
-  version "1.10.0"
+  version "1.11.0"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/superbet-group/risk.cli/releases/download/v1.10.0/riskctl_1.10.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "62fc31741dd0fd24be858862ac2af69ce864c4675a14a550193a3375cc8c38a3"
+    url "https://github.com/superbet-group/risk.cli/releases/download/v1.11.0/riskctl_1.11.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "3cad4dc49fd8d73596a4d0328fab2185fc04eb09f432fcd4bf7fc979803f06e7"
 
     def install
       bin.install "riskctl"
@@ -19,8 +19,8 @@ class Riskctl < Formula
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/superbet-group/risk.cli/releases/download/v1.10.0/riskctl_1.10.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "2aa92534fe6ef6c912f622f3624b1529fcb58e30e8df02a0d0300fc97c9071ce"
+    url "https://github.com/superbet-group/risk.cli/releases/download/v1.11.0/riskctl_1.11.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "3ea6a3f74dfae12ad3c80ab94baa36a57f1ae2c44de939495afee4f755eed7bd"
 
     def install
       bin.install "riskctl"
