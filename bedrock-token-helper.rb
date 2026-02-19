@@ -40,10 +40,16 @@ class BedrockTokenHelper < Formula
                 File.exist?("/opt/homebrew/bin/tsh") ||
                 system("command -v tsh >/dev/null 2>&1")
     unless tsh_found
+      install_command = if OS.mac?
+        "brew install superbet-group/tap/teleport-cli"
+      else
+        "brew install superbet-group/tap/wsl-teleport-cli"
+      end
+
       odie <<~EOS
         Teleport CLI (tsh) is required but not found!
         Install it first with:
-          brew install --cask superbet-group/tap/teleport-cli
+          #{install_command}
         Then retry:
           brew install superbet-group/tap/bedrock-token-helper
       EOS
