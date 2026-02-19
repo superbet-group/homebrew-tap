@@ -37,22 +37,16 @@ class WslTeleportCli < Formula
     # Check for conflicting teleport installations
     check_conflicts
 
-    # Extract version-specific directory name
-    prefix_dir = if Hardware::CPU.intel?
-      "teleport-ent"
-    elsif Hardware::CPU.arm?
-      "teleport-ent"
-    end
-
+    # Homebrew strips the top-level directory when extracting, so files are directly accessible
     # Install binaries
-    bin.install "#{prefix_dir}/tsh"
-    bin.install "#{prefix_dir}/tctl"
-    bin.install "#{prefix_dir}/teleport"
-    bin.install "#{prefix_dir}/tbot"
+    bin.install "tsh"
+    bin.install "tctl"
+    bin.install "teleport"
+    bin.install "tbot"
 
-    # Install man pages if they exist
-    if File.directory?("#{prefix_dir}/examples")
-      (share/"teleport").install "#{prefix_dir}/examples"
+    # Install examples if they exist
+    if File.directory?("examples")
+      (share/"teleport").install "examples"
     end
   end
 
