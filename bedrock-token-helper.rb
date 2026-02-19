@@ -38,6 +38,7 @@ class BedrockTokenHelper < Formula
     tsh_found = which("tsh") ||
                 File.exist?("/usr/local/bin/tsh") ||
                 File.exist?("/opt/homebrew/bin/tsh") ||
+                File.exist?("/home/linuxbrew/.linuxbrew/bin/tsh") ||
                 system("command -v tsh >/dev/null 2>&1")
     unless tsh_found
       install_command = if OS.mac?
