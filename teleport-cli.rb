@@ -62,12 +62,15 @@ class TeleportCli < Formula
       if system("#{brew_path} list --cask teleport-cli > /dev/null 2>&1")
         odie <<~EOS
           The teleport-cli cask is currently installed.
-          Run the migration script to remove it first:
 
+          Uninstall it first:
+            brew uninstall --cask superbet-group/tap/teleport-cli
+
+          If that leaves behind orphaned files (.app bundles, symlinks, pkgutil records),
+          run the cleanup script instead:
             bash <(curl -fsSL https://raw.githubusercontent.com/superbet-group/homebrew-tap/master/Casks/cleanup_teleport_cask.sh)
 
           Then retry:
-
             brew install superbet-group/tap/teleport-cli
         EOS
       end
