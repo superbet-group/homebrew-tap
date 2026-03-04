@@ -67,16 +67,16 @@ class TeleportCli < Formula
 
   def install
     if OS.mac?
-      # macOS: tsh and tctl are packaged as .app bundles due to Apple notarization
-      # Extract only the binary from within the bundle
-      required_binaries = {
-        "tsh.app/Contents/MacOS/tsh" => "tsh",
-        "tctl.app/Contents/MacOS/tctl" => "tctl",
-      }
-      required_binaries.each do |src, dst|
-        odie "Required binary #{src} not found in archive" unless File.exist?(src)
-        bin.install src => dst
+      # macOS: tsh and tctl must run from within their .app bundle due to Hardened Runtime
+      # entitlements (com.apple.application-identifier, keychain-access-groups).
+      # Extracting the binary standalone causes SIGKILL at launch.
+      # Solution: install the full .app bundle to prefix, then symlink the binary.
+      %w[tsh.app tctl.app].each do |app|
+        odie "Required bundle #{app} not found in archive" unless File.exist?(app)
+        prefix.install app
       end
+      bin.install_symlink prefix/"tsh.app/Contents/MacOS/tsh" => "tsh"
+      bin.install_symlink prefix/"tctl.app/Contents/MacOS/tctl" => "tctl"
     else
       # Linux: plain binaries
       %w[tsh tctl].each do |binary|
