@@ -47,16 +47,6 @@ class TeleportCli < Formula
     end
   end
 
-  # Prevents installation alongside existing cask or official teleport formula
-  conflicts_with cask: "superbet-group/tap/teleport-cli",
-                 because: <<~EOS
-                   both install tsh and tctl binaries.
-
-                   Run the migration script first:
-                     bash <(curl -fsSL https://raw.githubusercontent.com/superbet-group/homebrew-tap/master/Casks/cleanup_teleport_cask.sh)
-
-                   Then retry: brew install superbet-group/tap/teleport-cli
-                 EOS
   conflicts_with formula: "teleport",
                  because: "both install teleport binaries"
 
@@ -66,6 +56,23 @@ class TeleportCli < Formula
   end
 
   def install
+    # conflicts_with cask: does not abort installation — check manually
+    if OS.mac?
+      brew_path = File.exist?("/opt/homebrew/bin/brew") ? "/opt/homebrew/bin/brew" : "/usr/local/bin/brew"
+      if system("#{brew_path} list --cask teleport-cli > /dev/null 2>&1")
+        odie <<~EOS
+          The teleport-cli cask is currently installed.
+          Run the migration script to remove it first:
+
+            bash <(curl -fsSL https://raw.githubusercontent.com/superbet-group/homebrew-tap/master/Casks/cleanup_teleport_cask.sh)
+
+          Then retry:
+
+            brew install superbet-group/tap/teleport-cli
+        EOS
+      end
+    end
+
     if OS.mac?
       # macOS: tsh and tctl must run from within their .app bundle due to Hardened Runtime
       # entitlements (com.apple.application-identifier, keychain-access-groups).
