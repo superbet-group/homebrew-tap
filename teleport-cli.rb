@@ -59,7 +59,7 @@ class TeleportCli < Formula
     # conflicts_with cask: does not abort installation — check manually
     if OS.mac?
       brew_path = File.exist?("/opt/homebrew/bin/brew") ? "/opt/homebrew/bin/brew" : "/usr/local/bin/brew"
-      if system("#{brew_path} list --cask teleport-cli > /dev/null 2>&1")
+      if system(brew_path, "list", "--cask", "teleport-cli", out: File::NULL, err: File::NULL)
         odie <<~EOS
           The teleport-cli cask is currently installed.
 
