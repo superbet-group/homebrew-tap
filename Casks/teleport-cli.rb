@@ -1,4 +1,7 @@
 cask "teleport-cli" do
+  deprecate! date: "2026-03-04", because: "has been replaced by the teleport-cli formula. Install with: brew install superbet-group/tap/teleport-cli"
+  disable!   date: "2026-06-01", because: "has been replaced by the teleport-cli formula. Install with: brew install superbet-group/tap/teleport-cli"
+
   version "18.3.2"
   sha256 "bbe83f4f638828ad2bd9f818aaa3fdcf31a02c89ec3a713408e5cfc62f098b20"
 
@@ -109,6 +112,14 @@ cask "teleport-cli" do
     EOS
   end
 
-  uninstall pkgutil: "com.gravitational.teleport"
+  uninstall pkgutil: [
+               "com.gravitational.teleport",
+               "QH8AA5B8UP.com.gravitational.teleport.tsh",
+               "QH8AA5B8UP.com.gravitational.teleport.tctl",
+             ],
+             delete: [
+               "/Applications/tsh.app",
+               "/Applications/tctl.app",
+             ]
   zap trash: "~/.tsh"
 end
