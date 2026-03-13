@@ -15,9 +15,9 @@
 #   4. Release workflow automatically renders template and creates PR in homebrew-tap
 #
 # Placeholders (automatically substituted during release):
-#   0.3.0    - Semantic version (e.g., 1.2.3)
-#   https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.3.0/bedrock-token-helper-0.3.0.tar.gz  - GitHub release asset URL
-#   8b38752f834d193d886f24b0635ff79fb4572a278729a9a8961b3aa596719fd4     - Tarball SHA256 checksum
+#   0.3.1    - Semantic version (e.g., 1.2.3)
+#   https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.3.1/bedrock-token-helper-0.3.1.tar.gz  - GitHub release asset URL
+#   64472f513b2994468ea3fef75405090ebd846eb4afe27f4a6a091f08ad0ecbfd     - Tarball SHA256 checksum
 
 require_relative "custom_download_strategy"
 
@@ -26,9 +26,9 @@ class BedrockTokenHelper < Formula
   homepage "https://github.com/superbet-group/platform.bedrock-token-gateway"
 
   # Production URL (requires HOMEBREW_GITHUB_API_TOKEN)
-  url "https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.3.0/bedrock-token-helper-0.3.0.tar.gz",
+  url "https://github.com/superbet-group/platform.bedrock-token-gateway/releases/download/helper/v0.3.1/bedrock-token-helper-0.3.1.tar.gz",
       using: GitHubPrivateRepositoryReleaseDownloadStrategy
-  sha256 "8b38752f834d193d886f24b0635ff79fb4572a278729a9a8961b3aa596719fd4"
+  sha256 "64472f513b2994468ea3fef75405090ebd846eb4afe27f4a6a091f08ad0ecbfd"
 
   depends_on "jq"
 
@@ -38,12 +38,12 @@ class BedrockTokenHelper < Formula
     tsh_found = which("tsh") ||
                 File.exist?("/usr/local/bin/tsh") ||
                 File.exist?("/opt/homebrew/bin/tsh") ||
+                File.exist?("/home/linuxbrew/.linuxbrew/bin/tsh") ||
                 system("command -v tsh >/dev/null 2>&1")
     unless tsh_found
       odie <<~EOS
         Teleport CLI (tsh) is required but not found!
-        Install it first with:
-          brew install --cask superbet-group/tap/teleport-cli
+        Install it first, using instructions provided in the documentation.
         Then retry:
           brew install superbet-group/tap/bedrock-token-helper
       EOS
