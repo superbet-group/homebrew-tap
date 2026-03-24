@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.248.5"
+  version "2.248.6"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.248.5/betctl_2.248.5_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "5cea160e07068d1f0d3dee67cf01a6325b53f3c4fc99fcbc68ebd29dcb874ff4"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.248.6/betctl_2.248.6_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "f5c53bc32a3d827ea6db40fd86d8513ee6ac2c18e4c4e8e408c4a9dd55b99abc"
 
       def install
         bin.install "betctl"
@@ -20,8 +20,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.248.5/betctl_2.248.5_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8a827fc98c3d37d4bde6e5726257b19e7d374bd6948dc9215d6b31c842b4be6b"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.248.6/betctl_2.248.6_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "444682e377627ca2171c956aaa9404f60903ca507cd21efc200d9f4a4d98e0c7"
 
       def install
         bin.install "betctl"
@@ -33,8 +33,8 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.248.5/betctl_2.248.5_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f05a2c7d22569290e21d4a56acef9e8e5b62e1a401945d66f8bbdb475367bd45"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.248.6/betctl_2.248.6_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "e272e7d926d062ef3b127706a5af0ad230f542588c394e4c9a593443a276433f"
       def install
         bin.install "betctl"
         prefix.install "betctl-p10k.zsh"
@@ -42,8 +42,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.248.5/betctl_2.248.5_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "e4a27baade816fc5766269e69e274ca4188b76126e242692cda31a7c38b27e9a"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.248.6/betctl_2.248.6_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "4c8702179b3521a4e276fc9d304d3e1ef8a7af8a5a5bcd4675658fb9d373b6dc"
       def install
         bin.install "betctl"
         prefix.install "betctl-p10k.zsh"
