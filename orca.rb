@@ -4,34 +4,34 @@
 require_relative "custom_download_strategy"
 
 class Orca < Formula
-  desc "Orca - Sports platform CLI tool"
+  desc "Orca - Offer platform CLI tool"
   homepage "https://github.com/superbet-group/offer.orca"
   license "MIT"
-  version "1.0.0"
+  version "1.0.1"
 
   on_macos do
     on_intel do
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.0.0/orca_1.0.0_darwin_amd64.zip",
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.0.1/orca_1.0.1_darwin_amd64.zip",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "b595ebea0895b8209983eb8fddf6e1a178afca4b34ad6ea4b2c050fb79e5ac25"
+      sha256 "e55797ff276666e20604234e2d91368e206e2d011b8b0b7709908a53fd5afb82"
     end
     on_arm do
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.0.0/orca_1.0.0_darwin_arm64.zip",
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.0.1/orca_1.0.1_darwin_arm64.zip",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "d5e1292f5419a356d4fb7151a9a33db3ed4898a42ae2740e438770f4e167e4a7"
+      sha256 "ef740378f2bba275c6206c515e5cc047b612696163b8806a70dac24652a0c59a"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.0.0/orca_1.0.0_linux_amd64.tar.gz",
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.0.1/orca_1.0.1_linux_amd64.tar.gz",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8be80dd9d9af38e51ccf347ce1cc7cae4f72e8f62b553f297503f7bc28189517"
+      sha256 "55a5a9b48f0d773fa616a26f0bcd2d433068cd6c6cd96601ad1914e2dc77a9a5"
     end
     on_arm do
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.0.0/orca_1.0.0_linux_arm64.tar.gz",
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.0.1/orca_1.0.1_linux_arm64.tar.gz",
         using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4fdb040a1ce6efa3fa38319284757e9519b112f5e5a89f1b48f512033ba4a799"
+      sha256 "83f70966c0952380be8d788703fe8749a5cfd56566049c556a8d973466792a4b"
     end
   end
 
