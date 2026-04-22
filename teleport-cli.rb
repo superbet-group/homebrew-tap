@@ -4,20 +4,20 @@
 class TeleportCli < Formula
   desc "Teleport Enterprise CLI utilities for secure infrastructure access"
   homepage "https://goteleport.com/"
-  version "18.3.2"
+  version "18.7.4"
   license :cannot_represent
 
   on_macos do
     on_intel do
       url "https://cdn.teleport.dev/teleport-ent-v#{version}-darwin-amd64-bin.tar.gz",
           verified: "cdn.teleport.dev/"
-      sha256 "6cda5e54cfabe708d79b28142cdce590fb3d033fbce3834b891dbc3c5512586e"
+      sha256 "21c99b309c1ac6fe812176b7e9f7c9998f138df616a1517fb7406587bde61577"
     end
 
     on_arm do
       url "https://cdn.teleport.dev/teleport-ent-v#{version}-darwin-arm64-bin.tar.gz",
           verified: "cdn.teleport.dev/"
-      sha256 "f05f82bc86086368a3bf9ed6d588469f2d00f28bcf4fa543133eac88057be64c"
+      sha256 "6cf29bceb34655905481f7c34f6d5204bd792b70f15b1c6c839721840cb57480"
     end
   end
 
@@ -26,11 +26,11 @@ class TeleportCli < Formula
       if Hardware::CPU.is_64_bit?
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-amd64-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "df9cd320df5161f41618b16aaba68ea6fa0c929dda2670b6777e6ee34e3facff"
+        sha256 "3bdc012b48aeda622277e60229fa1ba49809c72d20fc6ccfe136aeeeaded6bc7"
       else
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-386-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "3636cce86a905a5cbcc45f1b38cfce79dc0522bae4daa59b5049273f485c47be"
+        sha256 "6320e731752d70ba21bafebecfa318c63be13996f5f6de0c59b6a269d67ce1a0"
       end
     end
 
@@ -38,11 +38,11 @@ class TeleportCli < Formula
       if Hardware::CPU.is_64_bit?
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-arm64-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "009359a4f14cba8cd1b48677d807f7764956ccefcba6ea25b2eef788297e78b4"
+        sha256 "37e353ecdf57828045d12aaa6db6745b191a3dcaa7058fe3eee8b7da369a65aa"
       else
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-arm-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "cc91fac97295b7cdfe59890305dccbd373ef2a2ef76a57172547ac2178b81416"
+        sha256 "749e703a6e86d2e991543ed5499333574429eeda20e9432ae68c068d9e0e29c9"
       end
     end
   end
