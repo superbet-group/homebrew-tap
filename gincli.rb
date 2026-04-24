@@ -6,20 +6,20 @@ require_relative "custom_download_strategy"
 class Gincli < Formula
   desc ""
   homepage ""
-  version "1.0.0"
+  version "1.1.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/gaming.integration.cli/releases/download/v1.0.0/gincli_1.0.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "bfe8a8518a630b05ce18dfe7a2d5310cc463258a1f094ad1293f997cbcd889bb"
+      url "https://github.com/superbet-group/gaming.integration.cli/releases/download/v1.1.0/gincli_1.1.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "750e85e26eba2e3e0c1cf4035ccb8d01d7f2d82979af919bf38ffcf2dfbc6ad6"
 
       def install
         bin.install "gincli"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/gaming.integration.cli/releases/download/v1.0.0/gincli_1.0.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "93c6ca78bfe581cc13e380bad33300322a293b71060dc2cdf67a44ace9da37e3"
+      url "https://github.com/superbet-group/gaming.integration.cli/releases/download/v1.1.0/gincli_1.1.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "1a8cf92449e9ea35f7086f7e7a3388ee3ceb4eb75c0f4da1bc5595331765fbd6"
 
       def install
         bin.install "gincli"
@@ -29,15 +29,15 @@ class Gincli < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/gaming.integration.cli/releases/download/v1.0.0/gincli_1.0.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "c37588c7952dabb93bc43a1d1a5dadd840ebefd6d58a853130ae63f70148004b"
+      url "https://github.com/superbet-group/gaming.integration.cli/releases/download/v1.1.0/gincli_1.1.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "1fd593133bc1db4de358ad6b48de6ebd2210385b21c26c5739b07ba403592862"
       def install
         bin.install "gincli"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/gaming.integration.cli/releases/download/v1.0.0/gincli_1.0.0_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "258b9e183f6e8704d4db0744e4fa279a00c25b78c1da6a2295e2d17f7667bdb5"
+      url "https://github.com/superbet-group/gaming.integration.cli/releases/download/v1.1.0/gincli_1.1.0_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "c8f6be5c9bf0be01c9ea6cf5d7b15a12b000441ad6f29dfaa13e57b91f1f0dc7"
       def install
         bin.install "gincli"
       end
