@@ -12,7 +12,7 @@ class Orca < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/superbet-group/offer.orca/releases/download/v1.34.3/orca_1.34.3_darwin_amd64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "b7b65a1b637a2d694b02c20ba29fdb6a7d9f1706e06e23e4bd86537c0384dd41"
+      sha256 "79f1b6a36d0d5d767885fa5baf44494c7e08fd969f76642392137c4af12d8d3a"
 
       def install
         bin.install "orca"
@@ -20,7 +20,7 @@ class Orca < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/superbet-group/offer.orca/releases/download/v1.34.3/orca_1.34.3_darwin_arm64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "60f0d2988bbdbfce7626f8f1f66c29e43e0050b7283718c84828224b51ab2f98"
+      sha256 "f2daf7604c67437f7d4fe4f8b6367b1412831e0bc68ae46cc008e86cc33b4188"
 
       def install
         bin.install "orca"
@@ -31,14 +31,14 @@ class Orca < Formula
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/superbet-group/offer.orca/releases/download/v1.34.3/orca_1.34.3_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "b49fff9966844c457503c279e1e29246f648f54c9fbf98fcfc945d45a991196f"
+      sha256 "4aacefabeb9c6563c8eb31b1831aabb82bb638c3971715d80ec7aea9a99bdce0"
       def install
         bin.install "orca"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/superbet-group/offer.orca/releases/download/v1.34.3/orca_1.34.3_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "b8e91021aca9faca768bb46d9897282f4b6dca621a4c6a433724343871d9b69a"
+      sha256 "127190d0dd50864ba5f77f07d0c84d02ef9cb63d6bac8650f8e8b0a3b1248293"
       def install
         bin.install "orca"
       end
