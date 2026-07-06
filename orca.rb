@@ -6,21 +6,21 @@ require_relative "custom_download_strategy"
 class Orca < Formula
   desc "Orca - Offer platform CLI tool"
   homepage "https://github.com/superbet-group/offer.orca"
-  version "1.99.1-feat-oc-6817-client-identity-headers.1"
+  version "1.99.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.99.1-feat-oc-6817-client-identity-headers.1/orca_1.99.1-feat-oc-6817-client-identity-headers.1_darwin_amd64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "e5d9b85d7150cb8d10a8655385dd6e57b3b9aaccd61330a145a4dc09ac39c70e"
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.99.1/orca_1.99.1_darwin_amd64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "8cbfdc5e783e56f2d91c7541882c12a44fc876fc28e1e69e6aa2a93406e87b79"
 
       def install
         bin.install "orca"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.99.1-feat-oc-6817-client-identity-headers.1/orca_1.99.1-feat-oc-6817-client-identity-headers.1_darwin_arm64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "eb2edb864cc014393febd930d699ec1532a8eba47035110e7def52130d6cbedc"
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.99.1/orca_1.99.1_darwin_arm64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "619e24078f6c5d745ec84a143ccb6e7b74ee8e23722199a4ec98bfdacda7a453"
 
       def install
         bin.install "orca"
@@ -30,15 +30,15 @@ class Orca < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.99.1-feat-oc-6817-client-identity-headers.1/orca_1.99.1-feat-oc-6817-client-identity-headers.1_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ae923d09537907f893858f4d4d95232e57e4a516b5b0311b5514122c875141ab"
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.99.1/orca_1.99.1_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "8ad83993901650bde6f66cf9d179897b50fc193bc4961f0d25850530adc343ef"
       def install
         bin.install "orca"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.99.1-feat-oc-6817-client-identity-headers.1/orca_1.99.1-feat-oc-6817-client-identity-headers.1_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "64b4742cd5737b72943a3d77fcc601ea19a6d06b7f81116f5a44f7714bb2725d"
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.99.1/orca_1.99.1_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "f0c260d9d4b14791af94bd151722ed886b4c49cc7f9352001b1628fa42530a71"
       def install
         bin.install "orca"
       end
