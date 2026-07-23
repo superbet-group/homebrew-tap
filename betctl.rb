@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1"
+  version "2.278.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1/betctl_2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "5e0822701e6526363e3902a8db492c6e9544107c7f9bd9f9f2670b81b7f632e2"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.278.0/betctl_2.278.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "c17676b93b1cd62e4182e7de39e5ad4209ea57670c88cab8e41ecad0ce17d3df"
 
       def install
         bin.install "betctl"
@@ -20,8 +20,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1/betctl_2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ab9d6bf154abef6e827841b28a9e86169681a6b3223f65e5b0c8c0ae2abd18c7"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.278.0/betctl_2.278.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "c5fea6ce39dbfafc7df98855f1c8873df4b47016953019262746cdc2a62f3dfb"
 
       def install
         bin.install "betctl"
@@ -33,8 +33,8 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1/betctl_2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "da2ab0b66fc147379ec34ba76eaacaffbce54b521c6cb030e6dd481db2db75ba"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.278.0/betctl_2.278.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "f62324a241a4b88a8d6a133ce563e1a94ec2dda3b741d39cf16da0e115cac527"
       def install
         bin.install "betctl"
         prefix.install "betctl-p10k.zsh"
@@ -42,8 +42,8 @@ class Betctl < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1/betctl_2.277.1-fix-oc-6821-client-identity-offer-platform-services-migration.1_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "3a6c53b93d6869f2bf6cd09481a57ef55dc99df4c20f19c262265826413cd12f"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.278.0/betctl_2.278.0_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "72dc70cfcf41052773ea5ae177b312ca79fdc49af079dfd744f9fee01bbf407d"
       def install
         bin.install "betctl"
         prefix.install "betctl-p10k.zsh"
