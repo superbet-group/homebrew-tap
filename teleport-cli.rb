@@ -4,20 +4,25 @@
 class TeleportCli < Formula
   desc "Teleport Enterprise CLI utilities for secure infrastructure access"
   homepage "https://goteleport.com/"
-  version "18.8.1"
+  version "18.10.4"
+  # To get updated sha256:
+  # for platform in darwin-amd64 darwin-arm64 linux-amd64 linux-386 linux-arm64 linux-arm; do
+  #  echo -n "$platform: "
+  #  VERSION=18.10.4; curl -fsSL "https://cdn.teleport.dev/teleport-ent-v${VERSION}-${platform}-bin.tar.gz.sha256" | awk '{print $1}'
+  # done
   license :cannot_represent
 
   on_macos do
     on_intel do
       url "https://cdn.teleport.dev/teleport-ent-v#{version}-darwin-amd64-bin.tar.gz",
           verified: "cdn.teleport.dev/"
-      sha256 "f75d36db3e7f7fafa960b15541a2f1edbb83a54346dec656857a24f6c167d226"
+      sha256 "913b9ffa7018214b2aea0b3ed2cdf45b1c6f26ae439157d693d3e7b58ca83774"
     end
 
     on_arm do
       url "https://cdn.teleport.dev/teleport-ent-v#{version}-darwin-arm64-bin.tar.gz",
           verified: "cdn.teleport.dev/"
-      sha256 "47843b1afc919b62c51e5f03e79a38af7e8632f0f059509db2b44aadaa156872"
+      sha256 "13ef88f7ab79d0420c427ead5b252d45a5f28ef21531545a8d191c8bb2b4f69b"
     end
   end
 
@@ -26,11 +31,11 @@ class TeleportCli < Formula
       if Hardware::CPU.is_64_bit?
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-amd64-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "1451781b9fc6de369211884c9db14dc3b2efb5e05668f8f7b7cfc88602601435"
+        sha256 "2f9e52478cbd9e71c93962a70b71866f82d2872faabc4ee0989a5d99f73fbe87"
       else
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-386-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "0be8af38cc9434f64a4dd5b789e400fe817dc14398f86441c6e79ab69e5b2653"
+        sha256 "10941c4cb9846f9b9a243ba5ebe111977a59a0f13f008abaa21b52d313c0a99a"
       end
     end
 
@@ -38,11 +43,11 @@ class TeleportCli < Formula
       if Hardware::CPU.is_64_bit?
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-arm64-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "c82cd01817ab4222461d2f320019fd7243bea62716fc3f732d11c71f4ca8e883"
+        sha256 "37a6751a2ab19708427fdb9a4cbb5803136be490e3ce5a1cc9186fcbcb64fe6c"
       else
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-arm-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "c3d66129e9c14ddaeec08865e86c06c16146487efbb02a0eb7f61aa105a0a1b3"
+        sha256 "695b011b2c1b387ccb07ad9232a4b3cfdb44418faffe950415a5dfa8ded2ae82"
       end
     end
   end
