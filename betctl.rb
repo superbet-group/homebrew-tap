@@ -6,24 +6,24 @@ require_relative "custom_download_strategy"
 class Betctl < Formula
   desc ""
   homepage ""
-  version "2.283.0"
+  version "2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.283.0/betctl_2.283.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "6e01b05b07b1cc5d337a024c1c4c562d3bd9caaf54c05b2a387ee8b8f9e40aa6"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1/betctl_2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "a878446b0ef0b44ccd8e263649ba9a4fecf9672d8789c009cffef0f90584f7f1"
 
-      def install
+      define_method(:install) do
         bin.install "betctl"
         prefix.install "betctl-p10k.zsh"
         generate_completions_from_executable(bin/"betctl", "completion")
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.283.0/betctl_2.283.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "04e5a400a6f0c3770600bf8b744e20d35b0db98a758698379fd1f54a0353e1c9"
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1/betctl_2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "8ab08c017e2eb0852fc87927b11cd7c3e7251bf1f1f39690d09c009adf5e9f74"
 
-      def install
+      define_method(:install) do
         bin.install "betctl"
         prefix.install "betctl-p10k.zsh"
         generate_completions_from_executable(bin/"betctl", "completion")
@@ -33,18 +33,18 @@ class Betctl < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.283.0/betctl_2.283.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "91d8d5f67b30c98849a0477d35cc0f722eceb67806bf8c4c69e4cd59c4195c7b"
-      def install
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1/betctl_2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "d8691efefef3ab657fc319511cd9b79a0324ff69b6cc511ba07b12bb1fdbb022"
+      define_method(:install) do
         bin.install "betctl"
         prefix.install "betctl-p10k.zsh"
         generate_completions_from_executable(bin/"betctl", "completion")
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.cli/releases/download/v2.283.0/betctl_2.283.0_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "dc17c654d6b5cc4e9f19c8f799e1c823998e51e6e53b7ddac55750bc73b9124b"
-      def install
+      url "https://github.com/superbet-group/betting.cli/releases/download/v2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1/betctl_2.283.1-fix-oc-6820-client-identity-offer-platform-services-migration.1_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "715488d6f4d4e7b52ffe66c7bc775a7a051cb2e082de7d5d02f03274f2b79927"
+      define_method(:install) do
         bin.install "betctl"
         prefix.install "betctl-p10k.zsh"
         generate_completions_from_executable(bin/"betctl", "completion")
