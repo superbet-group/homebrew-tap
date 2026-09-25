@@ -4,8 +4,7 @@ cask "teleport-cli" do
   # VERSION=18.10.4; curl -fsSL "https://cdn.teleport.dev/teleport-ent-${VERSION}.pkg.sha256"
   sha256 "826bcdb9ab4c8d0627e8bb5849008fed00d2589e6fd3d737952d361ea127f0c6"
 
-  url "https://cdn.teleport.dev/teleport-ent-#{version}.pkg",
-      verified: "cdn.teleport.dev/"
+  url "https://cdn.teleport.dev/teleport-ent-#{version}.pkg"
   name "Teleport enterprise utilities"
   desc "Access proxy for k8s, aws, apps, dbs and servers via ssh/rdp"
   homepage "https://goteleport.com/"
@@ -20,7 +19,7 @@ cask "teleport-cli" do
   # Preflight block prevents installation conflicts with existing teleport-related packages.
   # This is necessary because multiple teleport packages can install the same binaries (tsh, tctl)
   # in /usr/local/bin/, leading to broken symlinks when one package is uninstalled.
-  preflight do
+  preflight_steps do
     conflicting_casks = []
     conflicting_formulas = []
 
