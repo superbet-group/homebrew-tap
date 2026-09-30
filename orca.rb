@@ -6,21 +6,21 @@ require_relative "custom_download_strategy"
 class Orca < Formula
   desc "Orca - Offer platform CLI tool"
   homepage "https://github.com/superbet-group/offer.orca"
-  version "1.241.2"
+  version "1.241.3"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.241.2/orca_1.241.2_darwin_amd64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "e627a54b5dc9669796a1ad5cdba26219b8b7cddc629c5509040704d7c3253a93"
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.241.3/orca_1.241.3_darwin_amd64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "021e9c81ac5ff709c9bca5f3851dd19b5e92688d375b8c4fa8ae354f370e27e6"
 
       define_method(:install) do
         bin.install "orca"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.241.2/orca_1.241.2_darwin_arm64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "11dc21da0be5c208a22e71330b4f7cddaef287e6504b3d7d4831164480868a52"
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.241.3/orca_1.241.3_darwin_arm64.zip", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "957c66e4212ac4b74af825bfea19dfff909d6f78f225bc8172ec43a5701f54a5"
 
       define_method(:install) do
         bin.install "orca"
@@ -30,15 +30,15 @@ class Orca < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.241.2/orca_1.241.2_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4292b9bef1260d010bf66f2e06d9997076f86f7d8e006ce271e34bbc135644c6"
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.241.3/orca_1.241.3_linux_amd64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "2736a1186064994a270ec7a7b87a2e180403847efae7f037079edb95f77eece9"
       define_method(:install) do
         bin.install "orca"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/offer.orca/releases/download/v1.241.2/orca_1.241.2_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "92a88b0f67e7f30d875e22afe1db3b2368d6a6466e14356a571cd404fc490a3c"
+      url "https://github.com/superbet-group/offer.orca/releases/download/v1.241.3/orca_1.241.3_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "4f299f4eaf84b5ff3a096d31ccdeaca64e585ceda79dc0003e5fe445692cb317"
       define_method(:install) do
         bin.install "orca"
       end
