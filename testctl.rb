@@ -6,12 +6,12 @@ require_relative "custom_download_strategy"
 class Testctl < Formula
   desc ""
   homepage ""
-  version "1.223.0"
+  version "1.223.1"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/superbet-group/betting.test.xpres/releases/download/v1.223.0/testctl_1.223.0_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "1d394619c4a262152a1ed9b7192a2c6439235573ab21be1ed9b21ce7b8694e4b"
+      url "https://github.com/superbet-group/betting.test.xpres/releases/download/v1.223.1/testctl_1.223.1_macos_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "4fd6fb2ecbcaa46b4806d1d91f7e5f61aff7f41086c4f374c98cfa0fadaf037e"
 
       define_method(:install) do
         bin.install "testctl"
@@ -20,8 +20,8 @@ class Testctl < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/superbet-group/betting.test.xpres/releases/download/v1.223.0/testctl_1.223.0_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8278acec9f493b1fbeb294f28aa5b99fdf7fbcc7037726b6bfb5b520af44e493"
+      url "https://github.com/superbet-group/betting.test.xpres/releases/download/v1.223.1/testctl_1.223.1_macos_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "8aff7e058fbbe46a84aed60aa58d4b3200440506b8f63751bb91d75b7f0f120e"
 
       define_method(:install) do
         bin.install "testctl"
@@ -33,8 +33,8 @@ class Testctl < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.test.xpres/releases/download/v1.223.0/testctl_1.223.0_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "dbd77d3c8947d89d8ebc9050846c8b875ce66eeee9bb9774da80420d5f7a9588"
+      url "https://github.com/superbet-group/betting.test.xpres/releases/download/v1.223.1/testctl_1.223.1_linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "30653e9f3fe718e50024e778b2024514adc4c8c13449472f67f25687653db43c"
       define_method(:install) do
         bin.install "testctl"
         prefix.install "testctl-p10k.zsh"
@@ -42,8 +42,8 @@ class Testctl < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/superbet-group/betting.test.xpres/releases/download/v1.223.0/testctl_1.223.0_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "a0e99233db81cfec03f4af3f524a1e7897250db249fa8bc3af5b55d7af24179e"
+      url "https://github.com/superbet-group/betting.test.xpres/releases/download/v1.223.1/testctl_1.223.1_linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "b3b96cbc3493099267a49751cee7f6b5ac4d7a74795255daafb31aa69bc5220d"
       define_method(:install) do
         bin.install "testctl"
         prefix.install "testctl-p10k.zsh"
