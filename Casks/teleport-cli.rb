@@ -1,8 +1,8 @@
 cask "teleport-cli" do
-  version "18.10.4"
+  version "18.11.10"
   # To get updated sha256:
-  # VERSION=18.10.4; curl -fsSL "https://cdn.teleport.dev/teleport-ent-${VERSION}.pkg.sha256"
-  sha256 "826bcdb9ab4c8d0627e8bb5849008fed00d2589e6fd3d737952d361ea127f0c6"
+  # VERSION=18.11.10; curl -fsSL "https://cdn.teleport.dev/teleport-ent-${VERSION}.pkg.sha256"
+  sha256 "874d15ee71ecce88a6e62cc55ba53e6669701d639ae303654f22c8ddd2ae3cb6"
 
   url "https://cdn.teleport.dev/teleport-ent-#{version}.pkg",
       verified: "cdn.teleport.dev/"
