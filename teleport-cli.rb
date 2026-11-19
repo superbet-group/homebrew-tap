@@ -12,6 +12,11 @@ class TeleportCli < Formula
   # done
   license :cannot_represent
 
+  livecheck do
+    url "https://goteleport.com/download/"
+    regex(/teleport-ent[._-]v?(\d+(?:\.\d+)+)[._-](?:darwin|linux)/i)
+  end
+
   on_macos do
     on_intel do
       url "https://cdn.teleport.dev/teleport-ent-v#{version}-darwin-amd64-bin.tar.gz",
@@ -55,29 +60,22 @@ class TeleportCli < Formula
   conflicts_with formula: "teleport",
                  because: "both install teleport binaries"
 
-  livecheck do
-    url "https://goteleport.com/download/"
-    regex(/teleport-ent[._-]v?(\d+(?:\.\d+)+)[._-](?:darwin|linux)/i)
-  end
-
   def install
     # conflicts_with cask: does not abort installation — check manually
-    if OS.mac?
-      if (HOMEBREW_PREFIX/"Caskroom/teleport-cli").exist?
-        odie <<~EOS
-          The teleport-cli cask is currently installed.
+    if OS.mac? && (HOMEBREW_PREFIX/"Caskroom/teleport-cli").exist?
+      odie <<~EOS
+        The teleport-cli cask is currently installed.
 
-          Uninstall it first:
-            brew uninstall --cask superbet-group/tap/teleport-cli
+        Uninstall it first:
+          brew uninstall --cask superbet-group/tap/teleport-cli
 
-          If that leaves behind orphaned files (.app bundles, symlinks, pkgutil records),
-          run the cleanup script instead:
-            bash <(curl -fsSL https://raw.githubusercontent.com/superbet-group/homebrew-tap/master/Casks/cleanup_teleport_cask.sh)
+        If that leaves behind orphaned files (.app bundles, symlinks, pkgutil records),
+        run the cleanup script instead:
+          bash <(curl -fsSL https://raw.githubusercontent.com/superbet-group/homebrew-tap/master/Casks/cleanup_teleport_cask.sh)
 
-          Then retry:
-            brew install superbet-group/tap/teleport-cli
-        EOS
-      end
+        Then retry:
+          brew install superbet-group/tap/teleport-cli
+      EOS
     end
 
     if OS.mac?
@@ -124,7 +122,7 @@ class TeleportCli < Formula
   test do
     assert_predicate bin/"tsh", :executable?
     assert_predicate bin/"tctl", :executable?
-    output = shell_output("#{bin}/tsh version 2>&1", 0)
+    output = shell_output("#{bin}/tsh version 2>&1")
     assert_match version.to_s, output
   end
 end
