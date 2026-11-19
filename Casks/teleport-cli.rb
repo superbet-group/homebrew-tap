@@ -1,8 +1,8 @@
 cask "teleport-cli" do
-  version "18.10.4"
+  version "18.11.10"
   # To get updated sha256:
-  # VERSION=18.10.4; curl -fsSL "https://cdn.teleport.dev/teleport-ent-${VERSION}.pkg.sha256"
-  sha256 "826bcdb9ab4c8d0627e8bb5849008fed00d2589e6fd3d737952d361ea127f0c6"
+  # VERSION=18.11.10; curl -fsSL "https://cdn.teleport.dev/teleport-ent-${VERSION}.pkg.sha256"
+  sha256 "874d15ee71ecce88a6e62cc55ba53e6669701d639ae303654f22c8ddd2ae3cb6"
 
   url "https://cdn.teleport.dev/teleport-ent-#{version}.pkg",
       verified: "cdn.teleport.dev/"
@@ -14,6 +14,8 @@ cask "teleport-cli" do
     url "https://goteleport.com/download/"
     regex(/teleport-ent[._-]v?(\d+(?:\.\d+)+)\.pkg/i)
   end
+
+  depends_on :macos
 
   pkg "teleport-ent-#{version}.pkg"
 
@@ -42,12 +44,16 @@ cask "teleport-cli" do
     #    This is needed because custom taps are not included in official Homebrew API
     #    We look for packages that contain: tsh, tctl binaries or teleport domains
     Dir.glob("/opt/homebrew/Library/Taps/*/*/*.rb").each do |rb_file|
-      content = File.read(rb_file) rescue next
+      content = begin
+        File.read(rb_file)
+      rescue
+        next
+      end
       # Use word boundaries (\b) to avoid false positives like "betctl" matching "tctl"
       if content.match?(/(\btsh\b|\btctl\b|goteleport|cdn\.teleport)/)
-        if match = content.match(/^cask\s+"([^"]+)"/)
+        if (match = content.match(/^cask\s+"([^"]+)"/))
           potential_casks << match[1]
-        elsif match = content.match(/^class\s+(\w+)\s+<\s+Formula/)
+        elsif (match = content.match(/^class\s+(\w+)\s+<\s+Formula/))
           potential_formulas << match[1].downcase
         end
       end
@@ -55,7 +61,7 @@ cask "teleport-cli" do
 
     # Clean up the collected package lists
     potential_casks.uniq!
-    potential_casks.delete("teleport-cli")  # Don't conflict with ourselves
+    potential_casks.delete("teleport-cli") # Don't conflict with ourselves
     potential_formulas.uniq!
 
     # Check which of the potential packages are actually installed
@@ -80,7 +86,7 @@ cask "teleport-cli" do
     # mechanism, preventing partial registration of the cask
     unless conflicting_casks.empty? && conflicting_formulas.empty?
       all_conflicts = conflicting_casks.map { |c| "#{c} (cask)" } +
-                     conflicting_formulas.map { |f| "#{f} (formula)" }
+                      conflicting_formulas.map { |f| "#{f} (formula)" }
 
       error_message = <<~EOS
         \e[1;31mConflicting packages detected:\e[0m #{all_conflicts.join(", ")}
@@ -104,21 +110,22 @@ cask "teleport-cli" do
 
   def caveats
     <<~EOS
-        For initial authentication to teleport server, run following:
+      For initial authentication to teleport server, run following:
 
-            \e[1;32mtsh login --proxy=teleport.happening.dev\e[0m
+          \e[1;32mtsh login --proxy=teleport.happening.dev\e[0m
 
     EOS
   end
 
   uninstall pkgutil: [
-               "com.gravitational.teleport",
-               "QH8AA5B8UP.com.gravitational.teleport.tsh",
-               "QH8AA5B8UP.com.gravitational.teleport.tctl",
-             ],
-             delete: [
-               "/Applications/tsh.app",
-               "/Applications/tctl.app",
-             ]
+              "com.gravitational.teleport",
+              "QH8AA5B8UP.com.gravitational.teleport.tctl",
+              "QH8AA5B8UP.com.gravitational.teleport.tsh",
+            ],
+            delete:  [
+              "/Applications/tctl.app",
+              "/Applications/tsh.app",
+            ]
+
   zap trash: "~/.tsh"
 end

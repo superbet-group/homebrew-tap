@@ -4,25 +4,30 @@
 class TeleportCli < Formula
   desc "Teleport Enterprise CLI utilities for secure infrastructure access"
   homepage "https://goteleport.com/"
-  version "18.10.4"
+  version "18.11.10"
   # To get updated sha256:
   # for platform in darwin-amd64 darwin-arm64 linux-amd64 linux-386 linux-arm64 linux-arm; do
   #  echo -n "$platform: "
-  #  VERSION=18.10.4; curl -fsSL "https://cdn.teleport.dev/teleport-ent-v${VERSION}-${platform}-bin.tar.gz.sha256" | awk '{print $1}'
+  #  VERSION=18.11.10; curl -fsSL "https://cdn.teleport.dev/teleport-ent-v${VERSION}-${platform}-bin.tar.gz.sha256" | awk '{print $1}'
   # done
   license :cannot_represent
+
+  livecheck do
+    url "https://goteleport.com/download/"
+    regex(/teleport-ent[._-]v?(\d+(?:\.\d+)+)[._-](?:darwin|linux)/i)
+  end
 
   on_macos do
     on_intel do
       url "https://cdn.teleport.dev/teleport-ent-v#{version}-darwin-amd64-bin.tar.gz",
           verified: "cdn.teleport.dev/"
-      sha256 "913b9ffa7018214b2aea0b3ed2cdf45b1c6f26ae439157d693d3e7b58ca83774"
+      sha256 "7b92b1fb20f01429c1e29c99a062108ff9c1644c4dd919c9a07ea3580b148f8f"
     end
 
     on_arm do
       url "https://cdn.teleport.dev/teleport-ent-v#{version}-darwin-arm64-bin.tar.gz",
           verified: "cdn.teleport.dev/"
-      sha256 "13ef88f7ab79d0420c427ead5b252d45a5f28ef21531545a8d191c8bb2b4f69b"
+      sha256 "152bb2705b0fe81930ebeb99027ee1277a73450b1628876bc4f30f41ba3b634f"
     end
   end
 
@@ -31,11 +36,11 @@ class TeleportCli < Formula
       if Hardware::CPU.is_64_bit?
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-amd64-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "2f9e52478cbd9e71c93962a70b71866f82d2872faabc4ee0989a5d99f73fbe87"
+        sha256 "1468b60b1ad2b166bb08693a2f9eb3f3efdd8b623e195590d837f14d23183a9d"
       else
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-386-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "10941c4cb9846f9b9a243ba5ebe111977a59a0f13f008abaa21b52d313c0a99a"
+        sha256 "8d6638c0543f9b8c9386e5b7a9f873a74e650f52deed608721f1535176c0fcb3"
       end
     end
 
@@ -43,11 +48,11 @@ class TeleportCli < Formula
       if Hardware::CPU.is_64_bit?
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-arm64-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "37a6751a2ab19708427fdb9a4cbb5803136be490e3ce5a1cc9186fcbcb64fe6c"
+        sha256 "1f108ace453f91bd586c5e498a336568529ba48a2011ac320721f89603fda1e6"
       else
         url "https://cdn.teleport.dev/teleport-ent-v#{version}-linux-arm-bin.tar.gz",
             verified: "cdn.teleport.dev/"
-        sha256 "695b011b2c1b387ccb07ad9232a4b3cfdb44418faffe950415a5dfa8ded2ae82"
+        sha256 "79a6fa7a9264faaa76fb852b0b9c700981d9532b6c1aeea0329857bbfb02462c"
       end
     end
   end
@@ -55,29 +60,22 @@ class TeleportCli < Formula
   conflicts_with formula: "teleport",
                  because: "both install teleport binaries"
 
-  livecheck do
-    url "https://goteleport.com/download/"
-    regex(/teleport-ent[._-]v?(\d+(?:\.\d+)+)[._-](?:darwin|linux)/i)
-  end
-
   def install
     # conflicts_with cask: does not abort installation — check manually
-    if OS.mac?
-      if (HOMEBREW_PREFIX/"Caskroom/teleport-cli").exist?
-        odie <<~EOS
-          The teleport-cli cask is currently installed.
+    if OS.mac? && (HOMEBREW_PREFIX/"Caskroom/teleport-cli").exist?
+      odie <<~EOS
+        The teleport-cli cask is currently installed.
 
-          Uninstall it first:
-            brew uninstall --cask superbet-group/tap/teleport-cli
+        Uninstall it first:
+          brew uninstall --cask superbet-group/tap/teleport-cli
 
-          If that leaves behind orphaned files (.app bundles, symlinks, pkgutil records),
-          run the cleanup script instead:
-            bash <(curl -fsSL https://raw.githubusercontent.com/superbet-group/homebrew-tap/master/Casks/cleanup_teleport_cask.sh)
+        If that leaves behind orphaned files (.app bundles, symlinks, pkgutil records),
+        run the cleanup script instead:
+          bash <(curl -fsSL https://raw.githubusercontent.com/superbet-group/homebrew-tap/master/Casks/cleanup_teleport_cask.sh)
 
-          Then retry:
-            brew install superbet-group/tap/teleport-cli
-        EOS
-      end
+        Then retry:
+          brew install superbet-group/tap/teleport-cli
+      EOS
     end
 
     if OS.mac?
@@ -124,7 +122,7 @@ class TeleportCli < Formula
   test do
     assert_predicate bin/"tsh", :executable?
     assert_predicate bin/"tctl", :executable?
-    output = shell_output("#{bin}/tsh version 2>&1", 0)
+    output = shell_output("#{bin}/tsh version 2>&1")
     assert_match version.to_s, output
   end
 end
